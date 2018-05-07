@@ -37,6 +37,9 @@ var renderSomethingOnThePage = function(message) {
   /* Question:
    * How would you modify this template to add style to the look of the page?
    *
+
+    change <div> to include a style class <div class="message">
+
    * _Look below for one possible solution._
    */
 
@@ -94,6 +97,7 @@ var Message = Backbone.Model.extend({
    * [the documentation](http://backbonejs.org/#Model-constructor).
    */
   initialize: function(){
+    var message;
     /* This code will be run when we instantiate a new message.
      *
      * Notice that we are calling `this.on()`.
@@ -101,7 +105,10 @@ var Message = Backbone.Model.extend({
      * Putting it into the initialize function let's us be sure that
      * all models that are created will have event listeners on them.
      */
-    this.on(YOUR CODE HERE);
+    this.on('change', function(msg){
+      // msg {"message":"someMessage"}
+      renderSomethingOnThePage(msg[message]);
+    });
     /* It is your turn to write the event handler.
      *
      * Make an event listener that will listen for a `change` in this model's
@@ -132,6 +139,9 @@ var Message = Backbone.Model.extend({
 
 /* How would you call the second method?
  *
+
+myNewMessage.alertThisMessage();
+
  * Try it yourself, then check out the answer at the bottom of this script.
  */
 
